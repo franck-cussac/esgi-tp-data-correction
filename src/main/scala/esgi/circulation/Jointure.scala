@@ -50,7 +50,6 @@ object Jointure {
           .when(col("trafic_percentile") > 0.75, "take a bike")
           .otherwise(0)
       )
-
-    df.write.partitionBy("day", "hour").mode(SaveMode.Overwrite).parquet(outputFile)
+      .write.partitionBy("day", "hour").mode(SaveMode.Overwrite).parquet(outputFile)
   }
 }
